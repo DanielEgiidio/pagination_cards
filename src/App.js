@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import JsonData from ".data.json";
 
-function App() {
+const App = () => {
+  const [users, setUsers] = useState(JsonData.slice(0, 20));
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {users.map((user) => {
+        return (
+          <div className="user">
+            <h3>{user.firstName}</h3>
+            <h3>{user.lastName}</h3>
+            <h3>{user.email}</h3>
+          </div>
+        );
+      })}
     </div>
   );
-}
+};
 
 export default App;
